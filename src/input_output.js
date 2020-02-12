@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { useSelector, useDispatch, shallowEqual } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
-import sarcasmConverter from './sarcasm_case'
+import sarcasmCase from './case/sarcasm'
+import vaporwaveCase from './case/vaporwave'
 
 const Container = styled.div`
   textarea {
@@ -13,6 +14,7 @@ const Container = styled.div`
   #output {
     border: 1px solid #ace; 
     min-height: 4rem;
+    white-space: pre-wrap;
   }
 `
 
@@ -46,7 +48,11 @@ export default () => {
     let renderedOutput = text
 
     if (sarcasm) {
-      renderedOutput = sarcasmConverter(text)
+      renderedOutput = sarcasmCase(text)
+    }
+
+    if (vaporwave) {
+      renderedOutput = vaporwaveCase(renderedOutput)
     }
 
     setOutput(renderedOutput)
