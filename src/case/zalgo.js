@@ -123,3 +123,39 @@ export const ZALGO_DOWN = [
   '\u035a', /*     ͚     */
   '\u0323', /*     ̣     */
 ]
+
+// Math.floor(Math.random() * max)
+
+// if(document.getElementById('zalgo_opt_mini').checked)
+// {
+//   num_up = rand(8);
+//   num_mid = rand(2);
+//   num_down = rand(8);
+// }
+
+export default (text) => {
+  let newString = ''
+
+  for (let i = 0; i < text.length; i++) {
+    newString += text[i]
+
+    // generate random numbers for total up, mid, down diacritics
+    const up = Math.floor(Math.random() * 8)
+    const mid = Math.floor(Math.random() * 2)
+    const down = Math.floor(Math.random() * 8)
+
+    for (let i = 0; i < up; i++) {
+      newString += sample(ZALGO_UP)
+    }
+
+    for (let i = 0; i < mid; i++) {
+      newString += sample(ZALGO_MID)
+    }
+
+    for (let i = 0; i < down; i++) {
+      newString += sample(ZALGO_DOWN)
+    }
+  }
+
+  return newString
+}
