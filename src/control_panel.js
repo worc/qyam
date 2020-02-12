@@ -34,7 +34,11 @@ export function controlPanelOptions (state = defaultState, message) {
 
 const ControlPanel = ({ sarcasm, vaporwave, zalgo, update, reset }) => {
   function handleChange (event) {
-    update({ sarcasm: event.currentTarget.sarcasm.checked, zalgo: event.currentTarget.zalgo.checked })
+    update({
+      sarcasm: event.currentTarget.sarcasm.checked,
+      vaporwave: event.currentTarget.vaporwave.checked,
+      zalgo: event.currentTarget.zalgo.checked
+    })
   }
 
   return (
