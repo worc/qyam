@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import sarcasmCase from './case/sarcasm'
 import vaporwaveCase from './case/vaporwave'
+import zalgoCase from './case/zalgo'
 
 const Container = styled.div`
   textarea {
@@ -12,9 +13,17 @@ const Container = styled.div`
   }
   
   #output {
-    border: 1px solid #ace; 
+    align-items: center;
+    border: 1px solid #ace;
+    display: flex;
+    justify-content: center;
     min-height: 4rem;
     white-space: pre-wrap;
+    
+    &.zalgo {
+      background-color: black;
+      color: white;
+    }
   }
 `
 
@@ -55,12 +64,16 @@ export default () => {
       renderedOutput = vaporwaveCase(renderedOutput)
     }
 
+    if (zalgo) {
+      renderedOutput = zalgoCase(renderedOutput)
+    }
+
     setOutput(renderedOutput)
   }, [text, sarcasm, vaporwave, zalgo])
 
   return (
     <Container>
-      <div id='output'>{ output }</div>
+      <div id='output' className={ zalgo ? 'zalgo' : null }>{ output }</div>
       <textarea onChange={ event => dispatch({ type: UPDATE_TEXT, text: event.target.value })} value={ text }/>
     </Container>
   )
