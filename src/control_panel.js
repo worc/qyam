@@ -46,7 +46,10 @@ const ControlPanel = ({ sarcasm, vaporwave, zalgo, update, reset }) => {
       <input id='sarcasm' type='checkbox' defaultChecked={ sarcasm }/><label htmlFor='sarcasm'>sarcasm</label>
       <input id='vaporwave' type='checkbox' defaultChecked={ vaporwave }/><label htmlFor='vaporwave'>vaporwave</label>
       <input id='zalgo' type='checkbox'  defaultChecked={ zalgo }/><label htmlFor='zalgo'>zalgo</label>
-      <button onClick={ reset }>reset</button>
+      <button onClick={ event => {
+        event.preventDefault()
+        reset()
+      }}>reset</button>
     </StyledForm>
   )
 }
