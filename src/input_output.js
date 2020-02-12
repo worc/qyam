@@ -18,7 +18,6 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     min-height: 8rem;
-    white-space: pre-wrap;
   }
 `
 

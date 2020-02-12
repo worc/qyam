@@ -11,7 +11,6 @@ const StyledFooter = styled.footer`
   flex-flow: row wrap;
   justify-content: center;
   padding: 8px;
-  white-space: pre-wrap;
   
   > div {
     flex: 1 0 100%;

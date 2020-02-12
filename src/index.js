@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createGlobalStyle } from 'styled-components'
 
+import Header from './header'
 import ControlPanel from './control_panel'
 import InputOutput from './input_output'
 import Footer from './footer'
@@ -24,6 +25,17 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-flow: column nowrap;
     font-family: "Rokkitt", serif;
+    white-space: pre-wrap;
+  }
+  
+  h1 {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    
+    .sub {
+      font-size: 1rem;
+    }
   }
   
   hr {
@@ -43,7 +55,7 @@ const GlobalStyle = createGlobalStyle`
 render(
   <Provider store={ store }>
     <GlobalStyle/>
-    <h1>q̓y̓am</h1>
+    <Header/>
     <InputOutput/>
     <hr/>
     <ControlPanel/>
