@@ -1,5 +1,5 @@
 export default (text, startUpperCase = false) => {
-  let upper = startUpperCase
+  let upper = !startUpperCase
 
   return text.split(' ').map(word => {
     return word.split('').map(letter => {
