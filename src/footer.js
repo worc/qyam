@@ -3,11 +3,14 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import sarcasmCase from './case/sarcasm'
 import vaporwaveCase from './case/vaporwave'
+import zalgoCase from './case/zalgo'
 
 const StyledFooter = styled.footer`
   display: flex;
+  flex: 0 0 auto;
   flex-flow: row wrap;
   justify-content: center;
+  padding: 8px;
   white-space: pre-wrap;
   
   > div {
@@ -47,12 +50,21 @@ const Footer = ({ sarcasm, vaporwave, zalgo }) => {
       }, {})
     }
 
+    if (zalgo) {
+      renderedStrings = Object.keys(renderedStrings).reduce((acc, element) => {
+        return {
+          ...acc,
+          [element]: zalgoCase(renderedStrings[element]),
+        }
+      }, {})
+    }
+
     setStrings(renderedStrings)
 
   }, [sarcasm, vaporwave, zalgo])
 
   return (
-    <StyledFooter>
+    <StyledFooter className={ zalgo ? 'zalgo' : null }>
       <div>{ strings.source } <a href='https://github.com/worc/qyam'>{ strings.sourceUrl }</a></div>
       <div>{ strings.lifted } <a href='http://www.eeemo.net/'>{ strings.liftedUrl }</a></div>
     </StyledFooter>

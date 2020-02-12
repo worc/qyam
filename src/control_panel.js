@@ -3,9 +3,40 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 
 const StyledForm = styled.form`
+  align-content: flex-end;
+  display: flex;
+  flex: 1 0 auto;
+  flex-flow: row wrap;
+  justify-content: center;
+
   label {
     user-select: none;
   }
+  
+  button {
+    height: 2rem;
+    margin-top: 16px;
+    width: 33%;
+  }
+`
+
+const InputContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 1 0 33%;
+  height: 2rem;
+  justify-content: center;
+
+  input {
+    visibility: hidden;
+  }
+  
+  label {
+    text-align: center;
+    text-decoration: underline;
+  }
+  
+
 `
 
 const UPDATE_CONTROL_PANEL_OPTIONS = 'update_control_panel_options'
@@ -43,9 +74,9 @@ const ControlPanel = ({ sarcasm, vaporwave, zalgo, update, reset }) => {
 
   return (
     <StyledForm onChange={ handleChange }>
-      <input id='sarcasm' type='checkbox' defaultChecked={ sarcasm }/><label htmlFor='sarcasm'>sarcasm</label>
-      <input id='vaporwave' type='checkbox' defaultChecked={ vaporwave }/><label htmlFor='vaporwave'>vaporwave</label>
-      <input id='zalgo' type='checkbox'  defaultChecked={ zalgo }/><label htmlFor='zalgo'>zalgo</label>
+      <InputContainer><input id='sarcasm' type='checkbox' defaultChecked={ sarcasm }/><label htmlFor='sarcasm'>sarcasm</label></InputContainer>
+      <InputContainer><input id='vaporwave' type='checkbox' defaultChecked={ vaporwave }/><label htmlFor='vaporwave'>vaporwave</label></InputContainer>
+      <InputContainer><input id='zalgo' type='checkbox'  defaultChecked={ zalgo }/><label htmlFor='zalgo'>zalgo</label></InputContainer>
       <button onClick={ event => {
         event.preventDefault()
         reset()

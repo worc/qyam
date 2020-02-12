@@ -8,7 +8,7 @@ import zalgoCase from './case/zalgo'
 
 const Container = styled.div`
   textarea {
-    height: 4rem;
+    height: 8rem;
     width: 100%;
   }
   
@@ -17,13 +17,8 @@ const Container = styled.div`
     border: 1px solid #ace;
     display: flex;
     justify-content: center;
-    min-height: 4rem;
+    min-height: 8rem;
     white-space: pre-wrap;
-    
-    &.zalgo {
-      background-color: black;
-      color: white;
-    }
   }
 `
 

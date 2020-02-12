@@ -12,12 +12,38 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+  
+  html, body, #app {
+    height: 100%;
+    margin: 0;
+    padding: 8px;
+    width: 100%;
+  }
+  
+  #app {
+    display: flex;
+    flex-flow: column nowrap;
+    font-family: "Rokkitt", serif;
+  }
+  
+  hr {
+    width: 100%;
+  }
+  
+  .zalgo {
+    background-color: black;
+    color: white;
+    
+    a {
+      color: red;
+    }
+  }
 `
 
 render(
   <Provider store={ store }>
     <GlobalStyle/>
-    <h1>hello world</h1>
+    <h1>q̓y̓am</h1>
     <InputOutput/>
     <hr/>
     <ControlPanel/>
