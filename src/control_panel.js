@@ -23,7 +23,7 @@ const StyledForm = styled.form`
 const InputContainer = styled.div`
   align-items: center;
   display: flex;
-  flex: 1 0 33%;
+  flex: 1 0 25%;
   height: 2rem;
   justify-content: center;
 
@@ -44,6 +44,7 @@ const RESET_CONTROL_PANEL_OPTIONS = 'reset_control_panel_options'
 
 const defaultState = {
   sarcasm: false,
+  smallCaps: false,
   vaporwave: false,
   zalgo: false,
 }
@@ -53,6 +54,7 @@ export function controlPanelOptions (state = defaultState, message) {
     case UPDATE_CONTROL_PANEL_OPTIONS:
       return {
         sarcasm: message.sarcasm,
+        smallCaps: message.smallCaps,
         vaporwave: message.vaporwave,
         zalgo: message.zalgo,
       }
@@ -63,10 +65,11 @@ export function controlPanelOptions (state = defaultState, message) {
   }
 }
 
-const ControlPanel = ({ sarcasm, vaporwave, zalgo, update, reset }) => {
+const ControlPanel = ({ sarcasm, smallCaps, vaporwave, zalgo, update, reset }) => {
   function handleChange (event) {
     update({
       sarcasm: event.currentTarget.sarcasm.checked,
+      smallCaps: event.currentTarget.smallCaps.checked,
       vaporwave: event.currentTarget.vaporwave.checked,
       zalgo: event.currentTarget.zalgo.checked
     })
@@ -75,6 +78,7 @@ const ControlPanel = ({ sarcasm, vaporwave, zalgo, update, reset }) => {
   return (
     <StyledForm onChange={ handleChange }>
       <InputContainer><input id='sarcasm' type='checkbox' defaultChecked={ sarcasm }/><label htmlFor='sarcasm'>sarcasm</label></InputContainer>
+      <InputContainer><input id='smallCaps' type='checkbox' defaultChecked={ smallCaps }/><label htmlFor='smallCaps'>small caps</label></InputContainer>
       <InputContainer><input id='vaporwave' type='checkbox' defaultChecked={ vaporwave }/><label htmlFor='vaporwave'>vaporwave</label></InputContainer>
       <InputContainer><input id='zalgo' type='checkbox'  defaultChecked={ zalgo }/><label htmlFor='zalgo'>zalgo</label></InputContainer>
     </StyledForm>
@@ -83,12 +87,13 @@ const ControlPanel = ({ sarcasm, vaporwave, zalgo, update, reset }) => {
 
 const mapStateToProps = state => ({
   sarcasm: state.controlPanelOptions.sarcasm,
+  smallCaps: state.controlPanelOptions.smallCaps,
   vaporwave: state.controlPanelOptions.vaporwave,
   zalgo: state.controlPanelOptions.zalgo,
 })
 
 const mapDispatchToProps = dispatch => ({
-  update: ({ sarcasm, vaporwave, zalgo }) => dispatch({ type: UPDATE_CONTROL_PANEL_OPTIONS, sarcasm, vaporwave, zalgo }),
+  update: ({ sarcasm, smallCaps, vaporwave, zalgo }) => dispatch({ type: UPDATE_CONTROL_PANEL_OPTIONS, sarcasm, smallCaps, vaporwave, zalgo }),
   reset: () => dispatch({ type: RESET_CONTROL_PANEL_OPTIONS }),
 })
 
